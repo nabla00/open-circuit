@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "welcome-to-the-blog",
+    "title": "Welcome to My Simple GitHub Pages Blog",
+    "date": "2026-11-24",
+    "summary": "A quick overview of how this static blog works with plain Markdown files, instant search, and a dark theme.",
+    "tags": ["getting-started", "markdown"],
+    "file": "posts/welcome-to-the-blog.md",
+    "format": "markdown"
+  },
+  {
+    "slug": "deploying-with-github-pages",
+    "title": "Deploying a Static Blog on GitHub Pages",
+    "date": "2026-11-20",
+    "summary": "Step-by-step notes on pushing your repository, enabling GitHub Pages, and publishing new posts in seconds.",
+    "tags": ["github-pages", "guide"],
+    "file": "posts/deploying-with-github-pages.md",
+    "format": "markdown"
+  },
+  {
+    "slug": "html-entry-example",
+    "title": "Writing a Post in Raw HTML",
+    "date": "2026-11-15",
+    "summary": "Need custom layouts or callouts? You can drop a plain HTML file into the posts folder and link it in posts.json.",
+    "tags": ["html", "customization"],
+    "file": "posts/html-entry-example.html",
+    "format": "html"
+  }
+]
