@@ -1,5 +1,5 @@
-title: My Blog
-tagline: Simple notes and guides hosted on GitHub Pages.
+title: Open Circuit
+tagline: Electrical Engineering blog filled with many different ideas.
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
 exclude:
