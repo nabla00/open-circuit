@@ -1,53 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Blog</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="site-title">My Blog</a>
-      <p class="site-tagline">Notes, guides, and thoughts hosted on GitHub Pages.</p>
-    </div>
-  </header>
+---
+layout: default
+---
+<section class="search-section" aria-label="Search blog entries">
+  <div class="search-box">
+    <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    <input
+      type="search"
+      id="search-input"
+      class="search-input"
+      placeholder="Search posts..."
+      autocomplete="off"
+      aria-label="Search blog posts"
+    />
+    <button type="button" id="clear-search" class="clear-btn" hidden aria-label="Clear search">Clear</button>
+  </div>
+</section>
 
-  <main class="container">
-    <section class="search-section" aria-label="Search blog entries">
-      <div class="search-box">
-        <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input
-          type="search"
-          id="search-input"
-          class="search-input"
-          placeholder="Search posts by title, topic, or tag... (press /)"
-          autocomplete="off"
-          aria-label="Search blog posts"
-        />
-        <button type="button" id="clear-search" class="clear-btn" hidden aria-label="Clear search">Clear</button>
-      </div>
-      <div class="filter-bar">
-        <div id="tag-filters" class="tag-filters" role="group" aria-label="Filter by tag"></div>
-        <span id="results-count" class="results-count" aria-live="polite"></span>
-      </div>
-    </section>
+<section id="post-list" class="post-list" aria-label="Blog entries">
+  {% for post in site.posts %}
+    <a class="post-card" href="{{ post.url | relative_url }}">
+      <time class="post-card-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+      <h2 class="post-card-title">{{ post.title }}</h2>
+      <p class="post-card-description">{{ post.description }}</p>
+    </a>
+  {% endfor %}
+  <p id="no-results" class="status-message" hidden>No matching posts found.</p>
+</section>
 
-    <section id="post-list" class="post-list" aria-label="Blog entries">
-      <p class="status-message">Loading posts...</p>
-    </section>
-  </main>
+<script>
+  (function () {
+    const input = document.getElementById("search-input");
+    const clearBtn = document.getElementById("clear-search");
+    const cards = Array.from(document.querySelectorAll(".post-card"));
+    const noResults = document.getElementById("no-results");
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>Built with plain HTML, CSS, and JavaScript for GitHub Pages.</p>
-    </div>
-  </footer>
+    function filter() {
+      const q = input.value.trim().toLowerCase();
+      clearBtn.hidden = q.length === 0;
+      let visible = 0;
 
-  <script src="main.js"></script>
-</body>
-</html>
+      cards.forEach(function (card) {
+        const match = !q || card.textContent.toLowerCase().includes(q);
+        card.hidden = !match;
+        if (match) visible++;
+      });
+
+      noResults.hidden = visible > 0;
+    }
+
+    input.addEventListener("input", filter);
+    clearBtn.addEventListener("click", function () {
+      input.value = "";
+      input.focus();
+      filter();
+    });
+  })();
+</script>

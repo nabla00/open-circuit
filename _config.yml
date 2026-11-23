@@ -1,0 +1,6 @@
+title: My Blog
+tagline: Simple notes and guides hosted on GitHub Pages.
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+exclude:
+  - README.md

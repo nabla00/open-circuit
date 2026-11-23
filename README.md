@@ -1,48 +1,35 @@
-# Simple Dark-Theme GitHub Pages Blog
+# Minimal Dark-Theme Jekyll Blog (GitHub Pages)
 
-A lightweight, zero-build-step blog ready for GitHub Pages.
+A clean, static Jekyll blog with a dark theme, Markdown/HTML post rendering at build time, and a tiny search filter on the main page.
 
-## Files Included
+## Structure
 
-- `index.html` — Main page listing blog entries with a real-time search bar and tag filters.
-- `post.html` — View page that renders a selected `.md` (Markdown) or `.html` entry.
-- `styles.css` — Clean, responsive dark theme.
-- `main.js` — Loads `posts.json`, renders the post list, and powers instant search and tag filtering.
-- `post.js` — Reads `?slug=...` from the URL, fetches the entry file, and renders Markdown or HTML.
-- `markdown.js` — Zero-dependency Markdown-to-HTML parser.
-- `posts.json` — Manifest of all blog entries.
-- `posts/` — Folder containing your `.md` and `.html` blog entries.
+- `_config.yml` — Site title, tagline, and Jekyll settings.
+- `_layouts/default.html` — Base HTML layout (header, main container, footer).
+- `_layouts/post.html` — Viewer layout for Markdown and HTML blog entries.
+- `_posts/` — Your blog posts (`.md` or `.html`), named `YYYY-MM-DD-slug.md`.
+- `assets/style.css` — Dark theme stylesheet.
+- `index.html` — Main page listing Date, Header, and Description for each post, plus a search bar.
 
 ## Deploy to GitHub Pages
 
-1. Create a GitHub repository and push all files in this folder to the `main` branch.
-2. Go to **Settings → Pages** in your GitHub repository.
+1. Push these files to the root of a GitHub repository on the `main` branch.
+2. Go to **Settings → Pages**.
 3. Under **Source**, choose **Deploy from a branch**, select `main` and `/ (root)`, and click **Save**.
-4. Your blog will be live at `https://<username>.github.io/<repo>/` (or `https://<username>.github.io/` if the repo is named `<username>.github.io`).
 
 ## Add a New Post
 
-1. Add a `.md` or `.html` file in `posts/`.
-2. Add an entry to `posts.json`:
-   ```json
-   {
-     "slug": "my-new-post",
-     "title": "My New Post",
-     "date": "2026-11-25",
-     "summary": "Short description shown on the main page.",
-     "tags": ["notes"],
-     "file": "posts/my-new-post.md",
-     "format": "markdown"
-   }
-   ```
-3. Commit and push.
+Create a file in `_posts/` named `YYYY-MM-DD-your-title.md` (or `.html`) with this front matter:
 
-## Local Preview
+```yaml
+---
+layout: post
+title: Your Post Header
+date: 2026-11-25
+description: A short description shown under the title.
+---
 
-Because browsers block `fetch()` on `file://` URLs, run a quick local server:
-
-```bash
-python3 -m http.server 8000
+Write your Markdown or HTML content here.
 ```
 
-Then open `http://localhost:8000`.
+Commit and push — GitHub Pages automatically builds and updates the site.

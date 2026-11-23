@@ -7,9 +7,8 @@
   --text-muted: #8b949e;
   --accent: #58a6ff;
   --accent-soft: rgba(88, 166, 255, 0.14);
-  --code-bg: #161b22;
   --radius: 10px;
-  --max-width: 760px;
+  --max-width: 740px;
 }
 
 *,
@@ -87,9 +86,9 @@ main.container {
   flex: 1;
 }
 
-/* Search & Filters */
+/* Search */
 .search-section {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .search-box {
@@ -143,53 +142,11 @@ main.container {
   border-color: var(--text-muted);
 }
 
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.tag-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tag-btn {
-  background-color: var(--surface);
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 4px 12px;
-  font-size: 0.82rem;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-
-.tag-btn:hover {
-  color: var(--text);
-  border-color: var(--text-muted);
-}
-
-.tag-btn.active {
-  background-color: var(--accent-soft);
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-.results-count {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
 /* Post List */
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .post-card {
@@ -203,34 +160,27 @@ main.container {
   transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
 
+.post-card[hidden] {
+  display: none;
+}
+
 .post-card:hover {
   background-color: var(--surface-hover);
   border-color: var(--accent);
   transform: translateY(-1px);
 }
 
-.post-card-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.83rem;
+.post-card-date,
+.post-date {
+  display: block;
+  font-size: 0.84rem;
   color: var(--text-muted);
   margin-bottom: 6px;
 }
 
-.format-badge {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 2px 7px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-}
-
 .post-card-title {
   margin: 0 0 8px;
-  font-size: 1.25rem;
+  font-size: 1.24rem;
   font-weight: 600;
   color: var(--text);
   line-height: 1.35;
@@ -240,27 +190,13 @@ main.container {
   color: var(--accent);
 }
 
-.post-card-summary {
-  margin: 0 0 12px;
+.post-card-description {
+  margin: 0;
   color: var(--text-muted);
   font-size: 0.95rem;
 }
 
-.post-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tag-pill {
-  font-size: 0.76rem;
-  color: var(--accent);
-  background-color: var(--accent-soft);
-  padding: 2px 9px;
-  border-radius: 999px;
-}
-
-/* Single Post Article */
+/* Single Post */
 .post-header {
   margin-bottom: 28px;
   padding-bottom: 20px;
@@ -272,6 +208,12 @@ main.container {
   font-size: 2rem;
   line-height: 1.25;
   letter-spacing: -0.02em;
+}
+
+.post-description {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.02rem;
 }
 
 .post-body {
@@ -330,14 +272,14 @@ main.container {
 .post-body code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.88em;
-  background-color: var(--code-bg);
+  background-color: var(--surface);
   border: 1px solid var(--border);
   padding: 2px 6px;
   border-radius: 5px;
 }
 
 .post-body pre {
-  background-color: var(--code-bg);
+  background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 16px;
@@ -367,7 +309,7 @@ main.container {
 .status-message {
   color: var(--text-muted);
   text-align: center;
-  padding: 40px 20px;
+  padding: 36px 20px;
   background-color: var(--surface);
   border: 1px dashed var(--border);
   border-radius: var(--radius);
@@ -380,15 +322,6 @@ main.container {
   border-top: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 0.85rem;
-}
-
-.site-footer a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
